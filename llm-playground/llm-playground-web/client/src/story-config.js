@@ -1,4 +1,4 @@
-const name = '';
+const name = 'שיחה בשוק';
 const instructions = `
     You are an interactive fiction narrator.  
 
