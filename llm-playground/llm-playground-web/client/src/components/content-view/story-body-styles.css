@@ -1,5 +1,6 @@
 #main-cont {
     margin-top: 32px;
+    /* margin-bottom: 100px; */
     padding-bottom: 120px;
     width: 100%;
     box-sizing: border-box;
@@ -11,7 +12,7 @@
 
 #text-column-cont {
     width: 800px;
-    padding-bottom: 24px;
+    padding-bottom: 48px;
 }
 
 .message-assistant {

@@ -1,0 +1,22 @@
+/* bottom-container-styles.css */
+#bottom-container {
+    position: fixed;
+    bottom: 0;
+    width: 800px;
+    max-width: calc(100% - 48px);
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: var(--main-bg-color);
+    z-index: 10; /* Ensures it stays above the story body */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between ResourcesView and PlayerInput */
+    padding-bottom: 16px; /* Additional padding for better spacing */
+}
+
+@media only screen and (max-width: 800px) {
+    #bottom-container {
+        width: calc(100% - 24px);
+        padding-bottom: 12px;
+    }
+}

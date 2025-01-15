@@ -1,16 +1,13 @@
 #player-box {
-    position: fixed;
-    bottom: 0px;
-    box-sizing: border-box;
-    width: 800px;
-    padding-bottom: 64px;
-    margin-inline: 24px;
-    max-width: 100%;
-    /* display: inline-block; */
+    position: relative;
+    width: 100%; /* Matches the full width of the bottom-container */
     background-color: var(--main-bg-color);
     --input-height: 48px;
     --button-size: 40px;
     --corners: 12px;
+    padding: 16px 24px; /* Matches the padding of ResourcesView */
+    border-radius: 8px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
 }
 
 #player-text-input {
@@ -31,7 +28,8 @@
 }
 
 #send-button {
-    --gap: calc(0.5 * (var(--input-height) - var(--button-size)));
+    --gap: calc(2.5 * (var(--input-height) - var(--button-size)));
+    margin-right: 12px;
     position: absolute;
     top: var(--gap);
     inset-inline-end: var(--gap);

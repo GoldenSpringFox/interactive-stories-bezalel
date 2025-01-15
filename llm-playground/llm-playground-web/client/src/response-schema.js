@@ -25,7 +25,6 @@ export const responseSchema = {
                     Use a suggestive tone (e.g. start with "You can ..." or "You might ..."). 
                     Enclose it with round brackets "(callToAction)".
                     Word count limitation is always 10.
-
                 `,
             },
             storyEvent: {

@@ -4,7 +4,6 @@ import './story-body-styles.css';
 
 export default function StoryBodyView({ messages, apiStatus }) {
 
-
     useEffect(() => {
         if (messages.length > 2) {
 

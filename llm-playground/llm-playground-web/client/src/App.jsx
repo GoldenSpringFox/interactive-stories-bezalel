@@ -2,8 +2,10 @@ import { useState } from "react";
 import { postMessages } from "./story-api";
 import StoryBodyView from "./components/content-view/StoryBodyView";
 import PlayerInput from "./components/player-input/PlayerInput";
-import { storyConfig } from './story-config';
-// import { storyConfig } from './examples/story-config-01-birdwatching';
+import ResourcesView from "./components/resources-view/ResourcesView";
+import './components/bottom-container/bottom-container-styles.css';
+// import { storyConfig } from './story-config';
+import { storyConfig } from './examples/story-config-01-birdwatching';
 // import { storyConfig } from './examples/story-config-02-a-late-divorce';
 // import { storyConfig } from './examples/story-config-03-hebrew';
 
@@ -17,6 +19,11 @@ function App() {
     const [apiStatus, setStatus] = useState('idle'); // 'idle' | 'loading' | 'ended' | 'error'
     const [response, setResponse] = useState(null); // see responseSchema @ response-schema
     const [storyShouldEnd, setStoryShouldEnd] = useState(false);
+    const [resources, setResources] = useState([
+        { name: "Water", count: 5, icon: "/icons/water-icon.jpg" },
+        { name: "Energy", count: 5, icon: "/icons/energy-icon.jpg" },
+        { name: "Sanity", count: 5, icon: "/icons/sanity-icon.jpg" },
+    ]);
 
     function addMessage(newMsg) {
         setMessages(currentMsgs => [...currentMsgs, newMsg])
@@ -60,6 +67,23 @@ function App() {
         setStatus('idle');
         setResponse(response);
 
+        // Example of dynamically updating resources (e.g., Water decreases by 1)
+        setResources(currentResources => {
+            const updatedResources = currentResources.map(resource => {
+                if (resource.name === "Water" && resource.count > 0) {
+                    return { ...resource, count: resource.count - 1 };
+                }
+                if (resource.name === "Energy" && resource.count > 0) {
+                    return { ...resource, count: Math.ceil(Math.random() * 5)};
+                }
+                if (resource.name === "Sanity" && resource.count > 0) {
+                    return { ...resource, count: resource.count * 2 };
+                }
+                return resource;
+            });
+            return updatedResources;
+        });
+
         // console.log(res.playerSentiment);
         console.log('engagement:', response.playerEngagement);
         console.log('goal progress: ', response.goalProgress);
@@ -83,11 +107,14 @@ function App() {
                 {storyConfig.name || 'Open Story'}
             </h1>
             <StoryBodyView apiStatus={apiStatus} messages={messages} />
-            <PlayerInput
-                apiStatus={apiStatus}
-                onSend={handleSend}
-                onInactivity={handleInactivity}
-            />
+            <div id="bottom-container">
+                <ResourcesView resources={resources} />
+                <PlayerInput
+                    apiStatus={apiStatus}
+                    onSend={handleSend}
+                    onInactivity={handleInactivity}
+                />
+            </div>
         </>
     )
 }
