@@ -71,27 +71,30 @@ function App() {
         setResources(currentResources => {
             const updatedResources = currentResources.map(resource => {
                 if (resource.name === "Water" && resource.count > 0) {
-                    return { ...resource, count: resource.count - 1 };
+                    return { ...resource, count: Math.max(0, Math.min(5, resource.count + response.resourceWater)) };
                 }
                 if (resource.name === "Energy" && resource.count > 0) {
-                    return { ...resource, count: Math.ceil(Math.random() * 5)};
+                    return { ...resource, count: Math.max(0, Math.min(5, resource.count + response.resourceEnergy)) };
                 }
                 if (resource.name === "Sanity" && resource.count > 0) {
-                    return { ...resource, count: resource.count * 2 };
+                    return { ...resource, count: Math.max(0, Math.min(5, resource.count + response.resourceSanity)) };
                 }
                 return resource;
             });
             return updatedResources;
         });
 
-        // console.log(res.playerSentiment);
-        console.log('engagement:', response.playerEngagement);
-        console.log('goal progress: ', response.goalProgress);
+        console.log(`water: ${response.resourceWater}, energy: ${response.resourceEnergy}, sanity: ${response.resourceSanity}, time: ${response.timePassed}`)
 
         // Example: reacting to player sentiment:
         // if (res.playerSentiment.includes('sadness')) {
         //     addMessage({ role: 'system', content: `The following storyText should make the player laugh.` })
         // }
+
+        var waterResource = resources.find(resource => resource.name == "Water");
+        if (waterResource) {
+            console.log(`Current water count: ${waterResource.count}`)
+        }
 
         // Ending condition:
         if (response.goalProgress >= 0.9) {
