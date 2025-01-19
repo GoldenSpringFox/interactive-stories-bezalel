@@ -4,8 +4,8 @@ import StoryBodyView from "./components/content-view/StoryBodyView";
 import PlayerInput from "./components/player-input/PlayerInput";
 import ResourcesView from "./components/resources-view/ResourcesView";
 import './components/bottom-container/bottom-container-styles.css';
-// import { storyConfig } from './story-config';
-import { storyConfig } from './examples/story-config-01-birdwatching';
+import { storyConfig } from './story-config';
+// import { storyConfig } from './examples/story-config-01-birdwatching';
 // import { storyConfig } from './examples/story-config-02-a-late-divorce';
 // import { storyConfig } from './examples/story-config-03-hebrew';
 
@@ -32,18 +32,19 @@ function App() {
     function handleInactivity() {
         if (!response) return;
 
-        if (response.playerEngagement <= 0.6) {
-            // Trigger an independent story event:
-            addMessage({ role: 'assistant', content: response.storyEvent });
-        } else {
-            // Apply call to action hint:
-            addMessage({ role: 'assistant', content: response.callToAction });
-        }
+        // if (response.playerEngagement <= 0.6) {
+        //     // Trigger an independent story event:
+        //     addMessage({ role: 'assistant', content: response.storyEvent });
+        // } else {
+        //     // Apply call to action hint:
+        //     addMessage({ role: 'assistant', content: response.callToAction });
+        // }
     }
 
     function handleSend(playerText) {
         const newMessages = [...messages];
         newMessages.push({ role: 'user', content: playerText });
+        newMessages.push({ role: 'system', content: "Make sure to include the word 'Yan' in your next response"});
         setMessages(newMessages);
 
         setStatus('loading');
@@ -55,6 +56,8 @@ function App() {
             setStatus('error');
             return;
         }
+
+        console.log(newMessages);
 
         addMessage({ role: 'assistant', content: response.storyText });
 
@@ -91,10 +94,10 @@ function App() {
         //     addMessage({ role: 'system', content: `The following storyText should make the player laugh.` })
         // }
 
-        var waterResource = resources.find(resource => resource.name == "Water");
-        if (waterResource) {
-            console.log(`Current water count: ${waterResource.count}`)
-        }
+        // var waterResource = resources.find(resource => resource.name == "Water");
+        // if (waterResource) {
+        //     console.log(`Current water count: ${waterResource.count}`)
+        // }
 
         // Ending condition:
         if (response.goalProgress >= 0.9) {
