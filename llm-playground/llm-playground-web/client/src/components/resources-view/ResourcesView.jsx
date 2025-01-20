@@ -11,7 +11,7 @@ export default function ResourcesView({ resources }) {
                         alt={resource.name}
                         className="resource-icon"
                     />
-                    <div>: </div>
+                    {/* <div>: </div> */}
                     <div className="resource-info">
                         {/* <span className="resource-name">{resource.name}</span> */}
                         <span className="resource-count">{resource.count}</span>
