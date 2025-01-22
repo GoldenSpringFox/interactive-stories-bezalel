@@ -15,26 +15,45 @@ export const responseSchema = {
                     Word count limitation is 30. It might change by a system message.
                 `,
             },
-            callToAction: {
-                type: 'string',
-                description: `
-                    Call-to-action or a hint for the player on what to do next. 
-                    Encourage the player to be inventive and creative. 
-                    Do not suggest trivial actions.
-                    Do not suggest passive actions.
-                    Use a suggestive tone (e.g. start with "You can ..." or "You might ..."). 
-                    Enclose it with round brackets "(callToAction)".
-                    Word count limitation is always 10.
-                `,
+            goalProgress: {
+                type: 'number',
+                description:
+                    'float between 0 and 1. It represents how close is the player to reach his goal. 0 means not at all, 1 means the goal is achieved.',
             },
-            storyEvent: {
-                type: 'string',
-                description: `
-                    Additional story event that happens regardless of the player's input in order to push the story forward. 
-                    It migh be poetic, it might be surprising, or even very dramatic.
-                    Word count limitation is 50.
-                `,
+            isDead: {
+                type: 'boolean',
+                description: "returns true if the player is dead, and false otherwise"
             },
+            inventory: {
+                type: "array",
+                description: `
+                    An array of all the items the player aquired and currently has on them.
+                    These are specific special items that have a significant role in the story, and can only be acquired from very specific locations set by the system message.
+                    The player starts the game with no special items, and this array should start and remain empty until the player gets a hold of at least one of these items.
+                `,
+                items: {
+                    type: "string",
+                    description: "A special item that has a specific role in the story",
+                    enum: ["Map", "Flare", "Conch", "Pearl"]
+                }
+            }
+
+            // callToAction: {
+            //     type: 'string',
+            //     description: `
+            //         Call-to-action or a hint for the player on what to do next.
+            //         Describe the current surroundings and visible points of interest the player can see.
+            //         Word count limitation is always 30.
+            //     `,
+            // },
+            // storyEvent: {
+            //     type: 'string',
+            //     description: `
+            //         Additional story event that happens regardless of the player's input in order to push the story forward. 
+            //         It migh be poetic, it might be surprising, or even very dramatic.
+            //         Word count limitation is 50.
+            //     `,
+            // },
             // playerEngagement: {
             //     type: 'number',
             //     description: `a float between 0 and 1, where 0 is bored and 1 is excited, based on the user's latest message.`,
@@ -68,17 +87,8 @@ export const responseSchema = {
             //         yielded in something bad that lowered his morale (negative), or gave him hope (positive).
             //         should be 0 if the action is irrelevant to water use, and will be -2 or 2 only in extreme cases`
             // },
-            goalProgress: {
-                type: 'number',
-                description:
-                    'float between 0 and 1. It represents how close is the player to reach his goal. 0 means not at all, 1 means the goal is achieved.',
-            },
-            isDead: {
-                type: 'boolean',
-                description: "returns true if the player is dead, and false otherwise"
-            }
         },
-        required: ['storyText', 'callToAction', 'storyEvent', 'goalProgress', 'isDead'],
+        required: ['storyText', 'goalProgress', 'isDead', 'inventory'],
         additionalProperties: false,
     },
 };

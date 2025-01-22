@@ -4,23 +4,58 @@ const instructions = `
 
     The name of the story is "${name}".
 
-    Story background: 
-    The story takes place on an uncharted island disconnected from civilization.
-    The island contains the following properties:
-    - it takes around two hours to get from one side of the island to the other
-    - a volcano in the middle of the island
-    - mostly white beaches with one side of the island having black sand where the volcano errupted
-    - there are no people residing on the island, but it has an abandoned village (no one lived there for at least a decade)
-    - has a hidden spring somewhere on the island that is hidden with foliage, with drinkable clean water
-    - has a cave containing a family of hungry dogs that were left behind from when the villagers left the island. survived off of birds, and won't hesitate to hunt the player down if he doesn't earn their trust
-    - one side of the island contains high clifsides, and hidden between those clifs there is a pirate camp. the pirates keep some of their treasure there, and are off on a mission the on the first day. will capture the player if he gets caught stealing the treasure (they keep count), otherwise are open to recruit him to their cause.
-    - there is a big crashed ship on another side of the shoreline, which was mostly raided and stripped of its valueables. in the captains room there is a skeleton with a lab coat that holds a note with a password on it.
-    - there is a hidden lab with a path leading to it halfway up the volcano mountain. the lab has a metalic locked door that requires the password (found with the ship skeleton). the lab itself is deep underground and contains an unstable lava-powered reactor that wasn't maintained in a long time.
+    The Legend:
+    "Long ago, the god of the sea gave his champion a magical artifact that would grant its wielder the favor of the sea.
+    This champion ultimately failed him, and the god looked to seal away this artifact.
+    He split the artifact into two pieces:
+    The first a beautiful white pearl, thrown back into the sea.
+    The second an ornamental conch, left on a remote island and guarded by a mighty beast.
+    Rumor has it the god set this as a trial, waiting for a new hero to reclaim this treasure and succeed where the first champion failed"
 
-    The player washes up on shore, and is trying to survive while possibly finding a way to get off the island.
+    Story Background: 
+    The story takes place on the remote island from the legend.
+    The island has the following properties:
+    - It's a small island surrounded by ocean, disconnected from civilization and without any wildlife.
+    - It takes around an hour to get from one side of the island to the other.
+    - There is a volcano in the middle of the island that starts dorment.
+    - there is a big crashed ship on the beach. this ship belonged to a previous party that heard the legend and wanted to take the conch for themselves.
+
+    There is a group of pirates who know the legend, and got a hold of the white pearl. They are now in the area of the island looking for it, in hopes to find the conch.
+    The players character was sailing on a big ship, that accidentally went too close to the island. 
+    The kraken attacked the ship and drowned everyone, but the players character made it out alive and washed onto the island.
+    The kraken is currently busy eating the sunken ship.
+    The game starts when the player wakes up on this island.
+
+    Obstacles:
+    There are three main obstacles the player will have to overcome to survive:
+    - The volcano in the middle of the island is set to errupt, and will quickly kill everyone left on the island when it does (specifically the player and the pirates)
+    - The monster from the legends is a giant kraken that guards this island. It will kill anyone trying to get on or off the island (specifically the player and pirates). It is impossible for the player/pirates to win a fight against the kraken.
+    - There is a group of pirates that is looking for the magical artifact and is making its way towards the island.
+
+    Story Events (without player interruption):
+    - The player wakes up on the shore at 8:00
+    - At 10:00, there is an earthquake with black plumes of smoke coming from the volcano
+    - By 11:00, the kraken will have finished eating and will go back to hunting anything close to the island.
+    - The pirates are set to arrive by 12:00 without player help (they notice the black smoke). in this case the kraken will find them before they arrive and will sink the ship (could be seen by the player from a high place or the beach)
+    - At 13:00, the volcano erupts killing anyone still on the island by 14:00
+
+    Lose Conditions:
+    - Get caught in the volcano eruption
+    - Trying to swim / build a boat to get off the island will result in the kraken eating the player
+    - Failing to negotiate with the pirates will result in the player getting captured and dragged to their ship. 
+    The pirates won't find the treasure before the volcano erupts. 
+    they will run away to their ship and sail off the island with the player caged on their ship.
+    Since they don't have the magical artifact, the kraken will succeed in attacking the ship, and will kill everyone on it (including the player).
+
+    Winning Sequence:
+    1. (8:00) Go to the crashed ship and get the flare and the map.
+    2. (9:00) Use the flare, causing the pirates to arrive at 10:00 and wait for the pirates on the beach
+    3. (10:00) Negotiate with the pirates asking to join them in exchange for information on the location of the conch. The earthquake will happen in the middle of the negotiations, indicating there isn't much time and making them agree.
+    4. (11:00) Go with the pirates to the conch using the map
 
     The player's goal (important!):
-    either find a way to get off the island alive, or stabilize the emerging crises to start a new life on the island.
+    Get off the island alive!
+    Can only be done by discovering the winning sequence.
 
     Internal logic:
     ...
