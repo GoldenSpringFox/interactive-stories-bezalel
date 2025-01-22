@@ -31,4 +31,11 @@ const instructions = `
 const openingLine = `You wake to the crash of waves and the sting of salt on your lips. Rising unsteadily, you see a narrow white beach encircled by calm, endless ocean. Sand clings to your damp skin as the tide retreats, leaving you alone on this small, unfamiliar stretch of land.`;
 const firstCallToAction = `With nowhere else to go you’re left to explore the island. what will you do next?`;
 
-export const storyConfig = { name, instructions, openingLine, firstCallToAction };
+const events = [
+    // {time: 10, event: "Earchquake", system: ""}
+
+    //"The volcano starts erupting violently! if the player doesn't get off the island, the following storyText should reflect the player getting caught in the eruption, and isDead should be set to true. Use up to 50 words to write an epilogue."
+    {time: 9, event: "Volcano Eruption", system: "Insert the number 69 in your next response", message: "The volcano starts erupting violently!"}
+]
+
+export const storyConfig = { name, instructions, openingLine, firstCallToAction, events };

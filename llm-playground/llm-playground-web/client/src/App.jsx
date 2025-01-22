@@ -20,9 +20,6 @@ function App() {
     const [response, setResponse] = useState(null); // see responseSchema @ response-schema
     const [storyShouldEnd, setStoryShouldEnd] = useState(false);
     const [resources, setResources] = useState([
-        // { name: "Water", count: 5, icon: "/icons/water-icon.jpg" },
-        // { name: "Energy", count: 5, icon: "/icons/energy-icon.jpg" },
-        // { name: "Sanity", count: 5, icon: "/icons/sanity-icon.jpg" },
         { name: "Items", count: "", icon: "/icons/inventory-icon.jpg" },
         { name: "Time", count: "8:00", icon: "/icons/time-icon.png" },
     ]);
@@ -47,20 +44,29 @@ function App() {
     function handleSend(playerText) {
         const newMessages = [...messages];
         newMessages.push({ role: 'user', content: playerText });
-        // newMessages.push({ role: 'system', content: "Insert the name 'Alona' in your next response"});
+        newMessages.push({ role: 'system', content: `(important!!!) Insert the number ${currentTime} in your next response`});
         setMessages(newMessages);
 
         setStatus('loading');
         postMessages(newMessages, handleResponse);
     }
 
-    function handleResponse({ messages, response, error }) {
+    function handleResponse({ response, error }) {
         if (!response || error) {
             setStatus('error');
             return;
         }
 
         addMessage({ role: 'assistant', content: response.storyText });
+
+        storyConfig.events?.forEach(event => {
+            if (event.time === currentTime + 1) {
+                addMessage({ role: 'system', content: event.system})
+            }
+        })
+
+        console.log(messages)
+        console.log(response)
 
         if (storyShouldEnd) {
             setStatus('ended');
@@ -94,7 +100,7 @@ function App() {
         // }
 
         // Ending condition:
-        if (response.goalProgress >= 0.9) {
+        if (response.goalProgress >= 0.9 || response.isDead) {
             addMessage({ role: 'system', content: `The following storyText should end the story. Use up to 50 words to write an epilogue.` })
             setStoryShouldEnd(true);
         }

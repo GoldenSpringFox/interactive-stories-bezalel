@@ -47,40 +47,38 @@ export const responseSchema = {
             //         enum: ['ambiguous', 'joy', 'irritation', 'sadness', 'fear', 'surprise', 'disgust', 'empathy'],
             //     },
             // },
-            resourceWater: {
-                type: 'number',
-                description: `
-                    an integer between -2 and 2, that describes if the action the player took and the story that followed
-                    yielded in more access to drinking water (positive), or used up some of his current water (negative).
-                    should be 0 if the action is irrelevant to water use, and will be -2 or 2 only in extreme cases`
-            },
-            resourceEnergy: {
-                type: 'number',
-                description: `
-                    an integer between -2 and 2, that describes if the action the player took and the story that followed
-                    exerted him physically to make him weaker (negative), or gave him a boost of energy like resting (positive).
-                    should be 0 if the action is irrelevant to stamina use, and will be -2 or 2 only in extreme cases`
-            },
-            resourceSanity: {
-                type: 'number',
-                description: `
-                    an integer between -2 and 2, that describes if the action the player took and the story that followed
-                    yielded in something bad that lowered his morale (negative), or gave him hope (positive).
-                    should be 0 if the action is irrelevant to water use, and will be -2 or 2 only in extreme cases`
-            },
+            // resourceWater: {
+            //     type: 'number',
+            //     description: `
+            //         an integer between -2 and 2, that describes if the action the player took and the story that followed
+            //         yielded in more access to drinking water (positive), or used up some of his current water (negative).
+            //         should be 0 if the action is irrelevant to water use, and will be -2 or 2 only in extreme cases`
+            // },
+            // resourceEnergy: {
+            //     type: 'number',
+            //     description: `
+            //         an integer between -2 and 2, that describes if the action the player took and the story that followed
+            //         exerted him physically to make him weaker (negative), or gave him a boost of energy like resting (positive).
+            //         should be 0 if the action is irrelevant to stamina use, and will be -2 or 2 only in extreme cases`
+            // },
+            // resourceSanity: {
+            //     type: 'number',
+            //     description: `
+            //         an integer between -2 and 2, that describes if the action the player took and the story that followed
+            //         yielded in something bad that lowered his morale (negative), or gave him hope (positive).
+            //         should be 0 if the action is irrelevant to water use, and will be -2 or 2 only in extreme cases`
+            // },
             goalProgress: {
                 type: 'number',
                 description:
                     'float between 0 and 1. It represents how close is the player to reach his goal. 0 means not at all, 1 means the goal is achieved.',
             },
-            timePassed: {
-                type: 'number',
-                description: `
-                    a non-negative integer, represents how many hours it would take to perform the action the player described.
-                    ignore any time-descriptions the player inputs and estimate yourself how much time the action should take given their current situation.`
+            isDead: {
+                type: 'boolean',
+                description: "returns true if the player is dead, and false otherwise"
             }
         },
-        required: ['storyText', 'callToAction', 'storyEvent', 'goalProgress', 'resourceWater', 'resourceEnergy', 'resourceSanity', 'timePassed'],
+        required: ['storyText', 'callToAction', 'storyEvent', 'goalProgress', 'isDead'],
         additionalProperties: false,
     },
 };
