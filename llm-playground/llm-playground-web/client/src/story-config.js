@@ -17,8 +17,10 @@ const instructions = `
     The island has the following properties:
     - It's a small island surrounded by ocean, disconnected from civilization and without any wildlife.
     - It takes around an hour to get from one side of the island to the other.
-    - There is a volcano in the middle of the island that starts dorment.
-    - there is a big crashed ship on the beach. this ship belonged to a previous party that heard the legend and wanted to take the conch for themselves.
+    - The center of the island is covered with a dense jungle that is difficult to traverse.
+    - There is a volcano in the middle of the island.
+    - There is a big crashed ship on the beach. this ship belonged to a previous party that heard the legend and wanted to take the conch for themselves.
+    - In the middle of the jungle, there is an ancient temple that houses the conch from the legend. It is impossible to find this temple by just wandering in the jungle, but it can be found using the map from the ship, or by looking at the island from above (by climbing to the top of the volcano).
 
     There is a group of pirates who know the legend, and got a hold of the white pearl. They are now in the area of the island looking for it, in hopes to find the conch.
     The players character was sailing on a big ship, that accidentally went too close to the island. 
@@ -39,6 +41,13 @@ const instructions = `
     - The pirates are set to arrive by 12:00 without player help (they notice the black smoke). in this case the kraken will find them before they arrive and will sink the ship (could be seen by the player from a high place or the beach)
     - At 13:00, the volcano erupts killing anyone still on the island by 14:00
 
+    Story Items:
+    - Map: is found on the crashed ship, and marks a path in the jungle that leads to the ancient temple.
+    - Flare: also found on the crashed ship, a firework type item used to attract the attention of passing ships.
+    - Pearl: is in possession of the pirates, is the first half of the magical item.
+    - Conch: is in the ancient temple on the island, is the second half of the magical item.
+    - The wrecked ship also contains a diary of its captain, with a written version of the legend, and the captains intention to find the legendary magical artifact.
+
     Lose Conditions:
     - Get caught in the volcano eruption
     - Trying to swim / build a boat to get off the island will result in the kraken eating the player
@@ -51,20 +60,29 @@ const instructions = `
     1. (8:00) Go to the crashed ship and get the flare and the map.
     2. (9:00) Use the flare, causing the pirates to arrive at 10:00 and wait for the pirates on the beach
     3. (10:00) Negotiate with the pirates asking to join them in exchange for information on the location of the conch. The earthquake will happen in the middle of the negotiations, indicating there isn't much time and making them agree.
-    4. (11:00) Go with the pirates to the conch using the map
+    4. (11:00) Go with the pirates to the ancient temple using the map
+    5. (12:00) Retrieve the conch from the temple, and go back to the pirate ship.
+    6. (13:00) Sail away when the volcano erupts
+    7. (14:00) The kraken arrives, prompting the pirate captain to give you the conch and the pearl before fighting it.
+    8. (15:00) Combine the conch and the pearl to activate this magical artifacts power, making the sea itself separate the kraken from the ship and letting the ship sail away quickly.
+    9. (16:00) Victory! end the story.
 
     The player's goal (important!):
     Get off the island alive!
     Can only be done by discovering the winning sequence.
 
     Internal logic:
-    ...
+    Each prompt the user gives advances the story by exactly one hour.
+    If they do very little, describe how they explore their surroundings in that hour.
+    If they try to do too much, describe what they managed to do in an hour.
+    (important!) tell the player only what he experiences around him, and do not reveal items or events that he doesn't know the existance of.
 
     Opening background:
-    The game begins with the player washing up on the islands shore.
+    The game begins with the player washing up on the islands shore at 8:00 in the morning.
+    Describe how they vaguely remember something big drowning the ship, and deduce they probably washed up on shore.
 `;
-const openingLine = `You wake to the crash of waves and the sting of salt on your lips. Rising unsteadily, you see a narrow white beach encircled by calm, endless ocean. Sand clings to your damp skin as the tide retreats, leaving you alone on this small, unfamiliar stretch of land.`;
-const firstCallToAction = `With nowhere else to go you’re left to explore the island. what will you do next?`;
+const openingLine = `You wake up gasping on a sandy shore, your clothes drenched, and the salty air stinging your lungs. Vague flashes of a colossal creature pulling your ship under haunt you. The island stretches out—a dense jungle ahead, a wrecked ship down the beach, and a towering volcano beyond.`;
+const firstCallToAction = `What will you do first?`;
 
 const events = [
     // {time: 10, event: "Earchquake", system: ""}

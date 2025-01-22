@@ -12,7 +12,7 @@ export const responseSchema = {
                 type: 'string',
                 description: `
                     The story text to present to the player.
-                    Word count limitation is 30. It might change by a system message.
+                    Word count has to be more than 30, and less than 60. It might change by a system message.
                 `,
             },
             goalProgress: {
@@ -36,16 +36,15 @@ export const responseSchema = {
                     description: "A special item that has a specific role in the story",
                     enum: ["Map", "Flare", "Conch", "Pearl"]
                 }
-            }
-
-            // callToAction: {
-            //     type: 'string',
-            //     description: `
-            //         Call-to-action or a hint for the player on what to do next.
-            //         Describe the current surroundings and visible points of interest the player can see.
-            //         Word count limitation is always 30.
-            //     `,
-            // },
+            },
+            callToAction: {
+                type: 'string',
+                description: `
+                    Call-to-action or a hint for the player on what to do next.
+                    Describe the current surroundings and visible points of interest the player can see.
+                    Word count limitation is always 30.
+                `,
+            },
             // storyEvent: {
             //     type: 'string',
             //     description: `
@@ -88,7 +87,7 @@ export const responseSchema = {
             //         should be 0 if the action is irrelevant to water use, and will be -2 or 2 only in extreme cases`
             // },
         },
-        required: ['storyText', 'goalProgress', 'isDead', 'inventory'],
+        required: ['storyText', 'goalProgress', 'isDead', 'inventory', 'callToAction'],
         additionalProperties: false,
     },
 };
