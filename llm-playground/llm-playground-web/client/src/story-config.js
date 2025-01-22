@@ -35,11 +35,11 @@ const instructions = `
     - There is a group of pirates that is looking for the magical artifact and is making its way towards the island.
 
     Story Events (without player interruption):
-    - The player wakes up on the shore at 8:00
-    - At 10:00, there is an earthquake with black plumes of smoke coming from the volcano
-    - By 11:00, the kraken will have finished eating and will go back to hunting anything close to the island.
-    - The pirates are set to arrive by 12:00 without player help (they notice the black smoke). in this case the kraken will find them before they arrive and will sink the ship (could be seen by the player from a high place or the beach)
-    - At 13:00, the volcano erupts killing anyone still on the island by 14:00
+    - (8:00) The player wakes up on the shore
+    - (10:00) There is an earthquake with black plumes of smoke coming from the volcano
+    - (11:00) The kraken finishes eating and goes back to hunting anything close to the island.
+    - (12:00) The pirates saw the volcano's smoke and make their way to the island. The kraken finds them before they arrive and sinks their ship (could be seen by the player from a high place or the beach)
+    - (13:00) The volcano erupts killing anyone still on the island by 14:00
 
     Story Items:
     - Map: is found on the crashed ship, and marks a path in the jungle that leads to the ancient temple.
@@ -81,7 +81,7 @@ const instructions = `
     The game begins with the player washing up on the islands shore at 8:00 in the morning.
     Describe how they vaguely remember something big drowning the ship, and deduce they probably washed up on shore.
 `;
-const openingLine = `You wake up gasping on a sandy shore, your clothes drenched, and the salty air stinging your lungs. Vague flashes of a colossal creature pulling your ship under haunt you. The island stretches out—a dense jungle ahead, a wrecked ship down the beach, and a towering volcano beyond.`;
+const openingLine = `You wake up gasping on a sandy shore, your clothes drenched, and the salty air stinging your lungs. Vague flashes of a colossal creature pulling your ship under haunt you. The island stretches out — surrounded by ocean, with dense jungle vegetation in front of you, and a towering volcano standing above it.`;
 const firstCallToAction = `What will you do first?`;
 
 const events = [

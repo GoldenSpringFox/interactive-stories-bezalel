@@ -44,7 +44,7 @@ function App() {
     function handleSend(playerText) {
         const newMessages = [...messages];
         newMessages.push({ role: 'user', content: playerText });
-        newMessages.push({ role: 'system', content: `(important!!!) Insert the number ${currentTime} in your next response`});
+        // newMessages.push({ role: 'system', content: `(important!!!) Insert the number ${currentTime} in your next response`});
         setMessages(newMessages);
 
         setStatus('loading');
@@ -83,6 +83,9 @@ function App() {
             const updatedResources = currentResources.map(resource => {
                 if (resource.name === "Time") {
                     return { ...resource, count: (currentTime+1).toString() + ":00" };
+                }
+                if (resource.name === "Items") {
+                    return { ...resource, count: response.inventory.join(', ')}
                 }
                 return resource;
             });
