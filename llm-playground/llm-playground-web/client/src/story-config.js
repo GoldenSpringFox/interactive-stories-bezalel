@@ -34,15 +34,20 @@ const instructions = `
     - The monster from the legends is a giant kraken that guards this island. It will kill anyone trying to get on or off the island (specifically the player and pirates). It is impossible for the player/pirates to win a fight against the kraken.
     - There is a group of pirates that is looking for the magical artifact and is making its way towards the island.
 
-    Story Events (without player interruption):
+    Story Events (important!):
+    The following events happen as follows, unless the player explicitly changes them.
     - (8:00) The player wakes up on the shore
     - (10:00) There is an earthquake with black plumes of smoke coming from the volcano
-    - (11:00) The kraken finishes eating and goes back to hunting anything close to the island.
     - (12:00) The pirates saw the volcano's smoke and make their way to the island. The kraken finds them before they arrive and sinks their ship (could be seen by the player from a high place or the beach)
-    - (13:00) The volcano erupts killing anyone still on the island by 14:00
+    
+    The following events can't be interrupted by the player, and should always happen!
+    - (11:00) The kraken finishes eating and goes back to hunting anything close to the island.
+    - (13:00) The volcano erupts!
+    - (14:00) anyone still left on the island dies.
+    The story should always describe the volcano erupting at the appropriate time!
 
     Story Items:
-    - Map: is found on the crashed ship, and marks a path in the jungle that leads to the ancient temple.
+    - Map: is found on the crashed ship, and marks a path in the jungle. following the path on the map leads directly to the ancient temple and takes half an hour.
     - Flare: also found on the crashed ship, a firework type item used to attract the attention of passing ships.
     - Pearl: is in possession of the pirates, is the first half of the magical item.
     - Conch: is in the ancient temple on the island, is the second half of the magical item.
@@ -72,10 +77,12 @@ const instructions = `
     Can only be done by discovering the winning sequence.
 
     Internal logic:
-    Each prompt the user gives advances the story by exactly one hour.
-    If they do very little, describe how they explore their surroundings in that hour.
-    If they try to do too much, describe what they managed to do in an hour.
+    The story begins at exactly 8:00.
+    Each prompt the user inputs, advances the story by exactly one hour.
+    If they do very little in their prompt, describe how they explore their surroundings in that hour.
+    If they try to do too much in their prompt, describe what they managed to do in an hour.
     (important!) tell the player only what he experiences around him, and do not reveal items or events that he doesn't know the existance of.
+    do not include specific hours in your answers.
 
     Opening background:
     The game begins with the player washing up on the islands shore at 8:00 in the morning.
@@ -88,7 +95,7 @@ const events = [
     // {time: 10, event: "Earchquake", system: ""}
 
     //"The volcano starts erupting violently! if the player doesn't get off the island, the following storyText should reflect the player getting caught in the eruption, and isDead should be set to true. Use up to 50 words to write an epilogue."
-    {time: 9, event: "Volcano Eruption", system: "Insert the number 69 in your next response", message: "The volcano starts erupting violently!"}
+    // {time: 9, event: "Volcano Eruption", system: "Insert the number 69 in your next response", message: "The volcano starts erupting violently!"}
 ]
 
 export const storyConfig = { name, instructions, openingLine, firstCallToAction, events };

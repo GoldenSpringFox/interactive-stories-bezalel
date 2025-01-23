@@ -59,11 +59,11 @@ function App() {
 
         addMessage({ role: 'assistant', content: response.storyText });
 
-        storyConfig.events?.forEach(event => {
-            if (event.time === currentTime + 1) {
-                addMessage({ role: 'system', content: event.system})
-            }
-        })
+        // storyConfig.events?.forEach(event => {
+        //     if (event.time === currentTime + 1) {
+        //         addMessage({ role: 'system', content: event.system})
+        //     }
+        // })
 
         console.log(messages)
         console.log(response)
