@@ -89,7 +89,7 @@ const instructions = `
     Describe how they vaguely remember something big drowning the ship, and deduce they probably washed up on shore.
 `;
 const openingLine = `You wake up on a sandy shore, your clothes drenched, and the salty air stinging your lungs. Vague memories of a colossal creature pulling your ship under haunt you. The island stretches out — surrounded by ocean, with dense jungle vegetation in front of you, and a tall volcano standing above it.`;
-const firstCallToAction = `What will you do first?`;
+const firstCallToAction = `What will you do now?`;
 
 const events = [
     // {time: 10, event: "Earchquake", system: ""}
